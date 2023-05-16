@@ -14,10 +14,12 @@ namespace Platformer
         [Header("Tweak")]
         [SerializeField] private float _gravityValue;
         [SerializeField] private float _movementSpeed;
+        [SerializeField] private float _jumpHeight;
 
         [Header("Debug")]
         [SerializeField] private bool _isMoving;
         [SerializeField] private bool _isGrounded;
+        [SerializeField] private bool _isJumping;
 
         // inspector hidden
 
@@ -25,6 +27,7 @@ namespace Platformer
 
         private float deltaTime = 0.0f;
         private float _movementX = 0.0f;
+        private float _jump = 0.0f;
 
         // unity updates
 
@@ -53,14 +56,24 @@ namespace Platformer
             if (_characterController.isGrounded)
             {
                 _movement.y = 0.0f;
+
                 _isGrounded = true;
+                _isJumping = false;
             }
             else
             {
                 _isGrounded = false;
             }
 
-            _movement.y -= _gravityValue * deltaTime;
+            if (_jump != 0.0f && _isGrounded)
+            {
+                _movement.y += Mathf.Sqrt(_jumpHeight * _gravityValue * 2.0f);
+                _isJumping = true;
+            }
+            else
+            {
+                _movement.y -= _gravityValue * deltaTime;
+            }
 
             _characterController.Move(_movement * deltaTime);
         }
@@ -81,6 +94,19 @@ namespace Platformer
                 Vector2 temp = context.ReadValue<Vector2>();
 
                 _movementX = temp.x;
+            }
+        }
+
+        public void OnJump(InputAction.CallbackContext context)
+        {
+            if (context.performed)
+            {
+                _jump = context.ReadValue<float>();
+            }
+
+            if (context.canceled)
+            {
+                _jump = context.ReadValue<float>();
             }
         }
     }

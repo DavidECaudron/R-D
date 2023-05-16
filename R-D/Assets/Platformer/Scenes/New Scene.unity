@@ -1461,10 +1461,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _characterController: {fileID: 222280739}
-  _gravityValue: 9.81
-  _movementSpeed: 2
+  _gravityValue: 15
+  _movementSpeed: 3
+  _jumpHeight: 1
   _isMoving: 0
   _isGrounded: 0
+  _isJumping: 0
 --- !u!1 &238813080
 GameObject:
   m_ObjectHideFlags: 0
