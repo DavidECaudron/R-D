@@ -1,0 +1,34 @@
+{
+    "name": "Mushroll_InputAction",
+    "maps": [
+        {
+            "name": "Interaction",
+            "id": "4f1e5caa-d09e-4a5f-a03f-ba76b02b4943",
+            "actions": [
+                {
+                    "name": "Level_Rotation",
+                    "type": "Value",
+                    "id": "9f716bbe-6b3f-4ebd-a818-a1139fb4d164",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": true
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "d1c76953-17d3-41dc-a9f2-50ab85c81471",
+                    "path": "<Keyboard>/q",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Level_Rotation",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        }
+    ],
+    "controlSchemes": []
+}
